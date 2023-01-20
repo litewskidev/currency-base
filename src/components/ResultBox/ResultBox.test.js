@@ -54,4 +54,10 @@ import '@testing-library/jest-dom/extend-expect';
         cleanup();
       }
     });
+
+    it('should render proper info when value is negative number', () => {
+      render(<ResultBox from ='PLN' to='USD' amount={-100} />)
+      const conversion = screen.getByTestId('conversion');
+      expect(conversion).toHaveTextContent('Wrong value...');
+  });
   });
